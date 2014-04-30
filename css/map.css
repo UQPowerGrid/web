@@ -1,0 +1,75 @@
+.navbar { background-color: #8A218A}
+.navbar .navbar-nav>.active>a:hover,.navbar .navbar-nav>li>a:hover, .navbar .navbar-nav>li>a:focus { background-color: #C770C9}
+.navbar .navbar-nav>.active>a,.navbar .navbar-nav>.open>a,.navbar .navbar-nav>.open>a, .navbar .navbar-nav>.open>a:hover,.navbar .navbar-nav>.open>a, .navbar .navbar-nav>.open>a:hover, .navbar .navbar-nav>.open>a:focus { background-color: #C770C9}
+.dropdown-menu { background-color: #000000}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #FFFFFF}
+.navbar { border-color: #8A218A}
+.navbar .navbar-brand { color: #FFFFFF}
+.navbar .navbar-brand:hover { color: #FFFFFF}
+.navbar .navbar-nav>li>a { color: #FFFFFF}
+.navbar .navbar-nav>li>a:hover, .navbar .navbar-nav>li>a:focus { color: #FFFFFF}
+.navbar .navbar-nav>.active>a,.navbar .navbar-nav>.open>a, .navbar .navbar-nav>.open>a:hover, .navbar .navbar-nav>.open>a:focus { color: #FFFFFF}
+.navbar .navbar-nav>.active>a:hover, .navbar .navbar-nav>.active>a:focus { color: #000000}
+.dropdown-menu>li>a { color: #FFFFFF}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #000000}
+.navbar .navbar-nav>.dropdown>a .caret { border-top-color: #999999}
+.navbar .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
+.navbar .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
+.navbar .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
+
+body {
+	background-image:url('../images/background.png');
+	background-repeat: repeat;
+}
+
+.content {
+	margin-top: 5%;
+}
+
+.sub_content {
+	margin-top: 2.5%;
+}
+
+.sub_content .warning i {
+	font-size: 24px;
+	float: left;
+	margin-left: 10px;
+}
+
+.sub_content .warning p {
+	margin-top: 2px;
+	float: right;
+	margin-right: 20px;
+}
+
+.sub_content .normal i {
+	font-size: 24px;
+	float: left;
+	margin-left: 10px;
+}
+
+.sub_content .normal p {
+	margin-top: 2px;
+	float: right;
+	margin-right: 60px;
+}
+
+.sub_content .warning {
+	height: 100px;
+}
+
+.sub_content .normal {
+	height: 55px;
+}
+
+.sub_content .warning button {
+	margin-top: 10px;
+	margin-right: 39px;
+}
+.email_success {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	top: 100px;
+	left: 50%;
+}

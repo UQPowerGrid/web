@@ -1,0 +1,12 @@
+eqfeed_callback({"type":"FeatureCollection","metadata":{"generated": 1376897648000, "cacheMaxAge": 60},"features":
+
+[{"type":"Feature","properties":{"Location":"Station 21","Voltages":"120","Currents":"5","Frequency":""},"geometry":{"type":"Point","coordinates":[-27.494886, 153.008541]}},
+
+{"type":"Feature","properties":{"Voltages":"55","Currents":"4","Location":"Station 11","Frequency":""},"geometry":{"type":"Point","coordinates":[-27.495417, 153.010395]}},
+
+{"type":"Feature","properties":{"Voltages":"64","Currents":"5","Location":"The Great Court","Frequency":""},"geometry":{"type":"Point","coordinates":[-27.497552,153.013018]}},
+
+{"type":"Feature","properties":{"Voltages":"23","Currents":"4","Location":"UQ Sports Center","Frequency":""},"geometry":{"type":"Point","coordinates":[-27.495363,153.015958]}},
+
+]});
+
