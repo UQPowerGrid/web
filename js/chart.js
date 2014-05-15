@@ -14,27 +14,29 @@ function drawChart_station1() {
       },
       legend: {
         verticalAlign: "bottom",
-        horizontalAlign: "center"
+        horizontalAlign: "center",
+        fontSize:"15",
+        fontColor:"#ecf0f1"
       },
       toolTip:{
-        enabled: true
+        enabled: false
       },
       data: [
       {        
-        type: "pie",
+        type: "doughnut",
+        indexLabelPlacement: "outside",
         indexLabelFontFamily: "Garamond",       
-        indexLabelFontSize: 20,
+        indexLabelFontSize: 14,
         indexLabelFontWeight: "bold",
         startAngle:0,
         indexLabelFontColor: "MistyRose",       
-        indexLabelLineColor: "darkgrey", 
-        indexLabelPlacement: "inside", 
+        indexLabelLineColor: "darkgrey",
         toolTipContent: "{name}: {y}%",
         showInLegend: true,
         dataPoints: [
-        {  y: 70, indexLabel: "70%" , name: "TypeA",color:"#E26560", legendMarkerType: "circle"},
-        {  y: 18, indexLabel: "18%", name: "TypeB", color:"#A8CD66",legendMarkerType: "circle"},
-        {  y: 12, indexLabel: "12%", name: "TypeC", color:"#9E83CD",legendMarkerType: "circle"}
+        {  y: 70, indexLabel: "70%" , name: "TypeA",color:"#c0392b", legendMarkerType: "circle"},
+        {  y: 18, indexLabel: "18%", name: "TypeB", color:"#1abc9c",legendMarkerType: "circle"},
+        {  y: 12, indexLabel: "12%", name: "TypeC", color:"#3498db",legendMarkerType: "circle"}
         
         ]
       }
@@ -75,6 +77,7 @@ function drawChart_station1() {
     var dps = []; // dataPoints
 
     var chart = new CanvasJS.Chart("chartContainer",{
+      backgroundColor: "",
       title :{
         text: "" /*voltage*/
       },   
@@ -84,7 +87,7 @@ function drawChart_station1() {
   },   
       data: [{
         type: "line",
-	 xValueType: "dateTime",
+   xValueType: "dateTime",
         dataPoints: dps 
       }]
     });
@@ -99,6 +102,7 @@ function drawChart_station1() {
  var dps2 = []; // dataPoints
 
     var chart2 = new CanvasJS.Chart("chartContainer2",{
+      backgroundColor: "",
       title :{
         text: "" /*Current*/
       },   
@@ -108,7 +112,7 @@ function drawChart_station1() {
   },   
       data: [{
         type: "line",
-	 xValueType: "dateTime",
+   xValueType: "dateTime",
         dataPoints: dps2 
       }]
     });
@@ -120,11 +124,11 @@ function drawChart_station1() {
     var updateChart = function () {
 
           if(count < 0) count=12;
-	  
+    
           // count is number of times loop runs to generate random dataPoints.
           
           
-	              
+                
             yVal = parseInt(res[count*2]);
             dps.push({
               x: new Date(),
@@ -138,17 +142,17 @@ function drawChart_station1() {
           }
           
           chart.render();
-	  
-	  
-	  
-	  //chart2 update
-	  yVal2 = parseInt(res[count*2+1]);
+    
+    
+    
+    //chart2 update
+    yVal2 = parseInt(res[count*2+1]);
             dps2.push({
               x: new Date(),
               y: yVal2
             });
             
-		count--;
+    count--;
           if (dps2.length > dataLength)
           {
             dps2.shift();

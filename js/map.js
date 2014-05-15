@@ -2,71 +2,55 @@ $( document ).ready(function() {
     initialize();
     drawChart_station1();
 	
-	$("#email_btn").click(function(){
-    $(".email_success").show();
-    $(".email_success").delay(3000).slideUp();
-    noDanger();
-  });
+	
 });
+
+var a = new Array();
+a[2] = 'images/icon_green.png';
+a[1] = 'images/icon_green.png';
+a[0] = 'images/icon_green.png';
+a[3] = 'images/icon_green.png';
+var error = new google.maps.MarkerImage(
+    'images/icon_red.png',
+    null, /* size is determined at runtime */
+    null, /* origin is 0,0 */
+    null, /* anchor is bottom center of the scaled image */
+    new google.maps.Size(30, 30)
+  );
 var markers = [];
 var map = null;
 var polyline = null;
 var polyline2 = null;
 var infowindow = new google.maps.InfoWindow({});
-var a = new Array();
-a[2] = 'images/sibling_blue.png';
-a[1] = 'images/sibling_blue.png';
-a[0] = 'images/station_marker.png';
-a[3] = 'images/sibling_blue.png';
-var error = 'images/sibling_red.png';
+
 //createMarker function
-function createMarker(id, latLng, title, content, icon) {
+function createMarker(id, latLng, title, content) {
+        //define maker
+        var Icon = new google.maps.MarkerImage(
+            a[id],
+            null, /* size is determined at runtime */
+            null, /* origin is 0,0 */
+            null, /* anchor is bottom center of the scaled image */
+            new google.maps.Size(30, 30)
+        );  
+
         var marker = new google.maps.Marker({
           position: latLng,
           map: map,
           title: title,
-		  icon: a[id]
+		      icon: Icon
         });
 		markers.push(marker);
 
 //Onclick listener(mouseover)
         google.maps.event.addListener(marker, "click", function() {
-          if(id==0)
-            {
-              $('station1').show();  
-              $('station2').hide(); 
-              $('station3').hide();
-              $('station4').hide();
-            }
-          if(id==1)
-          {
-            document.getElementById('station1').style.display = "none";  
-            document.getElementById('station2').style.display = "block"; 
-            document.getElementById('station3').style.display = "none"; 
-            document.getElementById('station4').style.display = "none"; 
-          }
-          if(id==2)
-          {
-            document.getElementById('station1').style.display = "none";  
-              document.getElementById('station2').style.display = "none"; 
-              document.getElementById('station3').style.display = "block"; 
-              document.getElementById('station4').style.display = "none";  
-          }
-          if(id==3)
-          {
-            document.getElementById('station1').style.display = "none";  
-              document.getElementById('station2').style.display = "none"; 
-              document.getElementById('station3').style.display = "none"; 
-              document.getElementById('station4').style.display = "block";  
-          }
-
-
+ 
             infowindow.setContent(content);
             infowindow.open(map, marker);
         });
 
 }
-
+	  
 // initialization function (focus location ,map type and zoom level)
     function initialize() {
     var mapOptions = {
@@ -76,12 +60,13 @@ function createMarker(id, latLng, title, content, icon) {
       };
       map = new google.maps.Map(document.getElementById('map_canvas'),
           mapOptions);
+		  
 //reading location file
       var script = document.createElement('script');
       script.src = '\week.json';
       document.getElementsByTagName('head')[0].appendChild(script);
 	  
-//create line using coordinates	
+ //create line using coordinates	
 	var polylinecoordinates = [
 	new google.maps.LatLng(-27.494886, 153.008541),
     new google.maps.LatLng(-27.495315, 153.008451),
@@ -95,7 +80,7 @@ function createMarker(id, latLng, title, content, icon) {
     strokeColor: '#4CC417',
     strokeOpacity: 1.0,
     strokeWeight: 2,
-	editable: false
+	editable: false,
   });
   
   polyline.setMap(map);
@@ -115,7 +100,7 @@ function createMarker(id, latLng, title, content, icon) {
     strokeColor: '#0000A0',
     strokeOpacity: 1.0,
     strokeWeight: 2,
-	editable: false
+	editable: false,
   });
   
   polyline2.setMap(map);
@@ -130,11 +115,10 @@ function createMarker(id, latLng, title, content, icon) {
     strokeColor: '#4CC417',
     strokeOpacity: 1.0,
     strokeWeight: 2,
-	editable: false
+	editable: false,
   });
   
   polyline3.setMap(map);
-  
   
    	var polylinecoordinates4 = [
     new google.maps.LatLng(-27.497552,153.013018), 
@@ -146,13 +130,15 @@ function createMarker(id, latLng, title, content, icon) {
     strokeColor: '#4CC417',
     strokeOpacity: 1.0,
     strokeWeight: 2,
-	editable: false
+	editable: false,
   });
   
   polyline4.setMap(map);
   //toggle polyline in how many milisecond
-  setInterval(togglePolyline, 495);
+  setInterval(togglePolyline, 495); 
  }
+ 
+ 
 //toggle the polyline to make it blink	
 function togglePolyline(){
 	if (polyline.getMap() == null){
@@ -164,11 +150,13 @@ function togglePolyline(){
 	else{
 		polyline2.setMap(null);}
 }
-	
+
+	 
+	 
 	//eqfeed call back will take result array and loop through each marker
 	window.eqfeed_callback = function(results) {
       var bounds=new google.maps.LatLngBounds();
-      for (var i = 0; i < results.features.length; i++) {
+      for (var i = 0; i < 4; i++) {
 
         var mappy = results.features[i]; 
         var coords = mappy.geometry.coordinates; 
@@ -189,7 +177,7 @@ function togglePolyline(){
 	function noDanger(){
 		document.getElementById("warning").innerHTML="<div class='normal alert alert-success'><i class='glyphicon glyphicon-ok-sign'></i><p><strong>Great! </strong>All stations working fine</p></div>";
 		document.getElementById("su3").innerHTML = "<button onClick='clickStation(2)' type='button' class='btn btn-success col-md-2'>Station3</button>";
-		
+		markers[2].setIcon(a[2]);
 	}
 	
 	
@@ -199,7 +187,7 @@ function togglePolyline(){
 		map.setZoom(16);
 		if(id==2){
 			var myVar=setTimeout(function(){	
-				markers[2].setIcon(error);
+				markers[id].setIcon(error);
 				document.getElementById("su3").innerHTML = "<button onClick='clickStation(2)' type='button' class='btn btn-danger col-md-2'>Station3</button>";
 				
 				document.getElementById("warning").innerHTML= "<div class='warning alert alert-danger fade in'><i class='glyphicon glyphicon-info-sign'></i><p><strong>Warning!</strong>Detected failure from station 3</p><p><button type='button'class='btn btn-danger' data-toggle='modal' data-target='#email'>Report</button><button onClick='noDanger()' type='button' class='btn btn-default'>Dismiss</button></p></div>";
